@@ -11,7 +11,7 @@ Add the following to your `composer.json` file
 ```json
 {
     "require": {
-        "keyvanakbary/tuenti-api": "1.0.*"
+        "keyvanakbary/tuenti-api": "*"
     }
 }
 ```
