@@ -62,6 +62,11 @@ Get profile wall with statuses for a given user
 getProfileWallWithStatus($userId [, $page = 0 [, $size = 10]])
 ```
 
+Get all your friends
+```php
+getFriends()
+```
+
 Set your status
 ```php
 setStatus($status)

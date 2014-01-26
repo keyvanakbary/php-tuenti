@@ -24,7 +24,7 @@ class Client
 
     public function __construct($email, $password)
     {
-        $this->browser = new Browser();
+        $this->browser = new Browser;
         $this->email = $email;
         $this->password = $password;
     }
@@ -32,6 +32,15 @@ class Client
     public function setBrowser($browser)
     {
         $this->browser = $browser;
+    }
+
+    public function getFriends()
+    {
+        return $this->executeAuthenticatedRequest('getFriendsData', array(
+            'fields' => array(
+                'name', 'surname',  'avatar', 'sex', 'status', 'phone_number', 'chat_server'
+            )
+        ));
     }
 
     public function getProfile($userId)
