@@ -118,9 +118,9 @@ Get user albums
 getAlbums($userId [, $page = 0 [, $size = 10]])
 ```
 
-Get photos of an album
+Get album photos for a given user
 ```php
-getAlbumPhotos($albumId [, $page = 0])
+getAlbumPhotos($userId, $albumId [, $page = 0])
 ```
 
 Get all the tags for a photo
@@ -138,13 +138,13 @@ Get the wall posts for a given photo
 getPhotoWall($photoId [, $page = 0 [, $size = 10]])
 ```
 
-Iterate over your albums and photos
+Iterate over all your albums and photos
 ```php
 foreach ($t->getAlbums($t->me()) as $albumId => $album) {
     // do something with $album
     for ($i = 0; $i < $album['size']; $i = $i + Client::DEFAULT_PAGE_SIZE) {
         $page = floor($i / Client::DEFAULT_PAGE_SIZE);
-        $photos = current($t->getAlbumPhotos($albumId, $page));
+        $photos = current($t->getAlbumPhotos($t->me(), $albumId, $page));
         foreach ($photos as $photo) {
             // do something with $photo
         }

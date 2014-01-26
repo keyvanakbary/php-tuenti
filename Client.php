@@ -141,9 +141,10 @@ class Client
         ));
     }
 
-    public function getAlbumPhotos($albumId, $page = 0)
+    public function getAlbumPhotos($userId, $albumId, $page = 0)
     {
         return $this->executeAuthenticatedRequest('getAlbumPhotos', array(
+            'user_id' => $userId,
             'album_id' => $albumId,
             'page' => $page
         ));
