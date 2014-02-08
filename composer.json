@@ -2,6 +2,7 @@
     "name": "keyvanakbary/tuenti-api",
     "description": "Unofficial Tuenti API",
     "keywords": ["tuenti", "api", "client", "kiwwito"],
+    "license": "MIT",
     "minimum-stability": "stable",
     "authors": [
         {
