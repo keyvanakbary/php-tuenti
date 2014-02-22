@@ -167,7 +167,7 @@ class Client
 
     public function getPhotoWall($photoId, $page = 0, $size = self::DEFAULT_PAGE_SIZE)
     {
-        return $this->executeAuthenticatedRequest('getProfileWallWithStatus', array(
+        return $this->executeAuthenticatedRequest('getPhotoWall', array(
             'photo_id' => $photoId,
             'page' => $page,
             'post_per_page' => $size
