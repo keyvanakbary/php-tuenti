@@ -36,11 +36,9 @@ class Client
 
     public function getFriends()
     {
-        return $this->executeAuthenticatedRequest('getFriendsData', array(
-            'fields' => array(
-                'name', 'surname',  'avatar', 'sex', 'status', 'phone_number', 'chat_server'
-            )
-        ));
+        return $this->executeAuthenticatedRequest('getFriendsData', array('fields' => array(
+            'name', 'surname',  'avatar', 'sex', 'status', 'phone_number', 'chat_server'
+        )));
     }
 
     public function getProfile($userId)
@@ -58,17 +56,13 @@ class Client
     public function getProfileWallWithStatus($userId, $page = 0, $size = self::DEFAULT_PAGE_SIZE)
     {
         return $this->executeAuthenticatedRequest('getProfileWallWithStatus', array(
-            'user_id' => $userId,
-            'page' => $page,
-            'page_size' => $size
+            'user_id' => $userId, 'page' => $page, 'page_size' => $size
         ));
     }
 
     public function setStatus($status)
     {
-        return $this->executeAuthenticatedRequest('setUserData', array(
-            'status' => $status
-        ));
+        return $this->executeAuthenticatedRequest('setUserData', array('status' => $status));
     }
 
     public function getPersonalNotifications()
@@ -85,116 +79,88 @@ class Client
     public function getFriendsNotifications($page = 0, $size = self::DEFAULT_PAGE_SIZE)
     {
         return $this->executeAuthenticatedRequest('getFriendsNotifications', array(
-            'page' => $page,
-            'page_size' => $size
+            'page' => $page, 'page_size' => $size
         ));
     }
 
     public function getInbox($page = 0, $size = self::DEFAULT_PAGE_SIZE)
     {
-        return $this->executeAuthenticatedRequest('getInbox', array(
-            'page' => $page,
-            'page_size' => $size
-        ));
+        return $this->executeAuthenticatedRequest('getInbox', array('page' => $page, 'page_size' => $size));
     }
 
     public function getSentBox($page = 0, $size = self::DEFAULT_PAGE_SIZE)
     {
-        return $this->executeAuthenticatedRequest('getSentBox', array(
-            'page' => $page,
-            'page_size' => $size
-        ));
+        return $this->executeAuthenticatedRequest('getSentBox', array( 'page' => $page, 'page_size' => $size));
     }
 
     public function getSpamBox($page = 0, $size = self::DEFAULT_PAGE_SIZE)
     {
-        return $this->executeAuthenticatedRequest('getSpamBox', array(
-            'page' => $page,
-            'page_size' => $size
-        ));
+        return $this->executeAuthenticatedRequest('getSpamBox', array( 'page' => $page, 'page_size' => $size));
     }
 
     public function getThread($threadKey, $page = 0, $size = self::DEFAULT_PAGE_SIZE)
     {
         return $this->executeAuthenticatedRequest('getThread', array(
-            'thread_key' => $threadKey,
-            'page' => $page,
-            'page_size' => $size
+            'thread_key' => $threadKey, 'page' => $page, 'page_size' => $size
         ));
     }
 
     public function sendMessage($userId, $threadKey, $message)
     {
         return $this->executeAuthenticatedRequest('sendMessage', array(
-            'recipient' => $userId,
-            'thread_key' => $threadKey,
-            'body' => $message
+            'recipient' => $userId, 'thread_key' => $threadKey, 'body' => $message
         ));
     }
 
     public function getAlbums($userId, $page = 0, $size = self::DEFAULT_PAGE_SIZE)
     {
         return $this->executeAuthenticatedRequest('getUserAlbums', array(
-            'user_id' => $userId,
-            'page' => $page,
-            'albums_per_page' => $size
+            'user_id' => $userId, 'page' => $page, 'albums_per_page' => $size
         ));
     }
 
     public function getAlbumPhotos($userId, $albumId, $page = 0)
     {
         return $this->executeAuthenticatedRequest('getAlbumPhotos', array(
-            'user_id' => $userId,
-            'album_id' => $albumId,
-            'page' => $page
+            'user_id' => $userId, 'album_id' => $albumId, 'page' => $page
         ));
     }
 
     public function getPhotoTags($photoId)
     {
-        return $this->executeAuthenticatedRequest('getPhotoTags', array(
-            'photo_id' => $photoId
-        ));
+        return $this->executeAuthenticatedRequest('getPhotoTags', array('photo_id' => $photoId));
     }
 
     public function addPostToPhotoWall($photoId, $message)
     {
         return $this->executeAuthenticatedRequest('addPostToPhotoWall', array(
-            'photo_id' => $photoId,
-            'body' => $message
+            'photo_id' => $photoId, 'body' => $message
         ));
     }
 
     public function getPhotoWall($photoId, $page = 0, $size = self::DEFAULT_PAGE_SIZE)
     {
         return $this->executeAuthenticatedRequest('getPhotoWall', array(
-            'photo_id' => $photoId,
-            'page' => $page,
-            'post_per_page' => $size
+            'photo_id' => $photoId, 'page' => $page, 'post_per_page' => $size
         ));
     }
 
     public function getUpcomingEvents($size = self::DEFAULT_PAGE_SIZE, $includeBirthdays = false)
     {
         return $this->executeAuthenticatedRequest('getUpcomingEvents', array(
-            'desired_number' => $size,
-            'include_friend_birthdays' => $includeBirthdays
+            'desired_number' => $size, 'include_friend_birthdays' => $includeBirthdays
         ));
     }
 
     public function getEvent($eventId)
     {
-        return $this->executeAuthenticatedRequest('getEvent', array(
-            'event_id' => $eventId
-        ));
+        return $this->executeAuthenticatedRequest('getEvent', array('event_id' => $eventId));
     }
 
     public function getEventWall($eventId, $page = 0, $size = self::DEFAULT_PAGE_SIZE)
     {
         return $this->executeAuthenticatedRequest('getEventWall', array(
-            'event_id' => $eventId,
-            'page' => $page,
-            'posts_per_page' => $size
+            'event_id' => $eventId, 'page' => $page, 'posts_per_page' => $size
         ));
     }
 
