@@ -5,8 +5,10 @@ namespace Tuenti\Tests;
 class FakeBrowser
 {
     public $requests = array();
-    private $responses = array();
     public $numberOfRequests = 0;
+
+    private $responses = array();
+    private $fixedReturn;
 
     public function returns($methodName, $value)
     {
@@ -28,6 +30,18 @@ class FakeBrowser
             'headers' => $headers
         );
 
-        return $this->responses[$methodName];
+        return (isset($this->responses[$methodName])) ? $this->responses[$methodName] : $this->fixedReturn;
+    }
+
+    public function alwaysReturn($value)
+    {
+        $this->fixedReturn = $value;
+    }
+
+    public function getSentParameters($methodName)
+    {
+        $requests = json_decode($this->requests[$methodName]['parameters'], true);
+
+        return  $requests['requests'][0];
     }
 }
