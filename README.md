@@ -1,7 +1,7 @@
-Tuenti API
-==========
+PHP Tuenti API
+==============
 
-[![Build Status](https://secure.travis-ci.org/keyvanakbary/tuenti-api.png?branch=master)](http://travis-ci.org/keyvanakbary/tuenti-api)
+[![Build Status](https://secure.travis-ci.org/keyvanakbary/php-tuenti-api.png?branch=master)](http://travis-ci.org/keyvanakbary/php-tuenti-api)
 
 Unofficial Tuenti API.
 
@@ -11,7 +11,7 @@ Add the following to your `composer.json` file
 ```json
 {
     "require": {
-        "keyvanakbary/tuenti-api": "*"
+        "keyvanakbary/tuenti-api": "~1.0"
     }
 }
 ```
