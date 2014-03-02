@@ -14,8 +14,8 @@
     bootstrap = "./vendor/autoload.php" >
 
     <testsuites>
-        <testsuite name="Project Test Suite">
-            <directory>./Tests</directory>
+        <testsuite name="Tuenti Test Suite">
+            <directory>./src/Tuenti/Tests</directory>
         </testsuite>
     </testsuites>
 

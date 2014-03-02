@@ -17,9 +17,8 @@
         "phpunit/phpunit": "3.7.*"
     },
     "autoload": {
-        "psr-4": { "Tuenti\\": "" }
+        "psr-4": { "": "src" }
     },
-    "target-dir": "Tuenti",
     "config": {
         "bin-dir": "bin"
     }
