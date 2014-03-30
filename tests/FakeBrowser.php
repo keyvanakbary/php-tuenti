@@ -1,7 +1,5 @@
 <?php
 
-namespace Tuenti\Tests;
-
 class FakeBrowser
 {
     public $requests = array();

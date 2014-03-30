@@ -1,6 +1,6 @@
 <?php
 
-namespace Tuenti\Tests;
+require __DIR__ . '/FakeBrowser.php';
 
 use Tuenti\Client;
 
