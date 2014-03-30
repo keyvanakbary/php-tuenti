@@ -1,7 +1,7 @@
 PHP Tuenti API
 ==============
 
-[![Build Status](https://secure.travis-ci.org/keyvanakbary/php-tuenti-api.png?branch=master)](http://travis-ci.org/keyvanakbary/php-tuenti-api)
+[![Build Status](https://secure.travis-ci.org/keyvanakbary/php-tuenti-api.svg?branch=master)](http://travis-ci.org/keyvanakbary/php-tuenti-api)
 
 Unofficial Tuenti API.
 
