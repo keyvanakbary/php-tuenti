@@ -2,7 +2,9 @@
 
 class FakeBrowser
 {
-    public $requests = array();
+    public $url = '';
+    public $parameters = '';
+    public $headers = array();
     public $numberOfRequests = 0;
 
     private $responses = array();
@@ -15,31 +17,32 @@ class FakeBrowser
         return $this;
     }
 
-    public function post($url, $parameters, $headers)
-    {
-        $request = json_decode($parameters, true);
-
-        $this->numberOfRequests++;
-
-        $methodName = $request['requests'][0][0];
-        $this->requests[$methodName] = array(
-            'url' => $url,
-            'parameters' => $parameters,
-            'headers' => $headers
-        );
-
-        return (isset($this->responses[$methodName])) ? $this->responses[$methodName] : $this->fixedReturn;
-    }
-
     public function alwaysReturn($value)
     {
         $this->fixedReturn = $value;
     }
 
-    public function getSentParameters($methodName)
+    public function post($url, $parameters, $headers)
     {
-        $requests = json_decode($this->requests[$methodName]['parameters'], true);
+        $this->url = $url;
+        $this->parameters = $parameters;
+        $this->headers = $headers;
+        $this->numberOfRequests++;
 
-        return  $requests['requests'][0];
+        return $this->guessResponseFor($parameters);
+    }
+
+    private function guessResponseFor($parameters)
+    {
+        $methodName = $this->methodFor($parameters);
+
+        return (isset($this->responses[$methodName])) ? $this->responses[$methodName] : $this->fixedReturn;
+    }
+
+    private function methodFor($call)
+    {
+        $request = json_decode($call, true);
+
+        return $request['requests'][0][0];
     }
 }

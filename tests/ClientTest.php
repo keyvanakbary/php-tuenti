@@ -63,9 +63,9 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
         $this->client->getFriends();
 
-        $this->assertSentParametersEquals('getFriendsData', array('fields' => array(
-            'name', 'surname',  'avatar', 'sex', 'status', 'phone_number', 'chat_server'
-        )));
+        $this->assertCallsWith('["getFriendsData",{"fields":[' .
+            '"name","surname","avatar","sex","status","phone_number","chat_server"' .
+        ']}]');
     }
 
     /**
@@ -77,13 +77,11 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
         $this->client->getProfile(1);
 
-        $this->assertSentParametersEquals('getUsersData', array(
-            'ids' => array(1),
-            'fields' => array(
-                'favorite_books', 'favorite_movies', 'favorite_music', 'favorite_quotes',
-                'hobbies', 'website', 'about_me_title', 'about_me', 'birthday', 'city', 'province',
-                'name', 'surname', 'avatar', 'sex', 'status', 'phone_number', 'chat_server'
-            )));
+        $this->assertCallsWith('["getUsersData",{"ids":[1],"fields":[' .
+            '"favorite_books","favorite_movies","favorite_music","favorite_quotes","hobbies","website",' .
+            '"about_me_title","about_me","birthday","city","province","name","surname","avatar","sex",' .
+            '"status","phone_number","chat_server"' .
+        ']}]');
     }
 
     /**
@@ -95,9 +93,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
         $this->client->getProfileWallWithStatus(1, 2, 3);
 
-        $this->assertSentParametersEquals('getProfileWallWithStatus', array(
-            'user_id' => 1, 'page' => 2, 'page_size' => 3
-        ));
+        $this->assertCallsWith('["getProfileWallWithStatus",{"user_id":1,"page":2,"page_size":3}]');
     }
 
     /**
@@ -109,7 +105,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
         $this->client->setStatus('status');
 
-        $this->assertSentParametersEquals('setUserData', array('status' => 'status'));
+        $this->assertCallsWith('["setUserData",{"status":"status"}]');
     }
 
     /**
@@ -121,13 +117,11 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
         $this->client->getPersonalNotifications();
 
-        $this->assertSentParametersEquals('getUserNotifications', array(
-            'types' => array(
-                'unread_friend_messages', 'unread_spam_messages', 'new_profile_wall_posts',
-                'new_friend_requests', 'accepted_friend_requests', 'new_photo_wall_posts',
-                'new_tagged_photos', 'new_event_invitations', 'new_profile_wall_comments'
-            )
-        ));
+        $this->assertCallsWith('["getUserNotifications",{"types":[' .
+            '"unread_friend_messages","unread_spam_messages","new_profile_wall_posts","new_friend_requests",' .
+            '"accepted_friend_requests","new_photo_wall_posts","new_tagged_photos","new_event_invitations",' .
+            '"new_profile_wall_comments' .
+        '"]}]');
     }
 
     /**
@@ -139,7 +133,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
         $this->client->getFriendsNotifications(1, 2);
 
-        $this->assertSentParametersEquals('getFriendsNotifications', array('page' => 1, 'page_size' => 2));
+        $this->assertCallsWith('["getFriendsNotifications",{"page":1,"page_size":2}]');
     }
 
     /**
@@ -151,7 +145,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
         $this->client->getInbox(1, 2);
 
-        $this->assertSentParametersEquals('getInbox', array('page' => 1, 'page_size' => 2));
+        $this->assertCallsWith('["getInbox",{"page":1,"page_size":2}]');
     }
 
     /**
@@ -163,7 +157,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
         $this->client->getSentBox(1, 2);
 
-        $this->assertSentParametersEquals('getSentBox', array('page' => 1, 'page_size' => 2));
+        $this->assertCallsWith('["getSentBox",{"page":1,"page_size":2}]');
     }
 
     /**
@@ -175,7 +169,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
         $this->client->getSpamBox(1, 2);
 
-        $this->assertSentParametersEquals('getSpamBox', array('page' => 1, 'page_size' => 2));
+        $this->assertCallsWith('["getSpamBox",{"page":1,"page_size":2}]');
     }
 
     /**
@@ -187,7 +181,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
         $this->client->getThread(1, 2, 3);
 
-        $this->assertSentParametersEquals('getThread', array('thread_key' => 1, 'page' => 2, 'page_size' => 3));
+        $this->assertCallsWith('["getThread",{"thread_key":1,"page":2,"page_size":3}]');
     }
 
     /**
@@ -199,9 +193,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
         $this->client->sendMessage(1, 2, 'message');
 
-        $this->assertSentParametersEquals('sendMessage', array(
-            'recipient' => 1, 'thread_key' => 2, 'body' => 'message'
-        ));
+        $this->assertCallsWith('["sendMessage",{"recipient":1,"thread_key":2,"body":"message"}]');
     }
 
     /**
@@ -213,7 +205,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
         $this->client->getAlbums(1, 2, 3);
 
-        $this->assertSentParametersEquals('getUserAlbums', array('user_id' => 1, 'page' => 2, 'albums_per_page' => 3));
+        $this->assertCallsWith('["getUserAlbums",{"user_id":1,"page":2,"albums_per_page":3}]');
     }
 
     /**
@@ -225,7 +217,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
         $this->client->getAlbumPhotos(1, 2, 3);
 
-        $this->assertSentParametersEquals('getAlbumPhotos', array('user_id' => 1, 'album_id' => 2, 'page' => 3));
+        $this->assertCallsWith('["getAlbumPhotos",{"user_id":1,"album_id":2,"page":3}]');
     }
 
     /**
@@ -237,7 +229,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
         $this->client->getPhotoTags(1);
 
-        $this->assertSentParametersEquals('getPhotoTags', array('photo_id' => 1));
+        $this->assertCallsWith('["getPhotoTags",{"photo_id":1}]');
     }
 
     /**
@@ -249,7 +241,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
         $this->client->addPostToPhotoWall(1, 'message');
 
-        $this->assertSentParametersEquals('addPostToPhotoWall', array('photo_id' => 1, 'body' => 'message'));
+        $this->assertCallsWith('["addPostToPhotoWall",{"photo_id":1,"body":"message"}]');
     }
 
     /**
@@ -261,7 +253,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
         $this->client->getPhotoWall(1, 2, 3);
 
-        $this->assertSentParametersEquals('getPhotoWall', array('photo_id' => 1, 'page' => 2, 'post_per_page' => 3));
+        $this->assertCallsWith('["getPhotoWall",{"photo_id":1,"page":2,"post_per_page":3}]');
     }
 
     /**
@@ -273,10 +265,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
         $this->client->getUpcomingEvents(1, true);
 
-        $this->assertSentParametersEquals('getUpcomingEvents', array(
-            'desired_number' => 1,
-            'include_friend_birthdays' => true
-        ));
+        $this->assertCallsWith('["getUpcomingEvents",{"desired_number":1,"include_friend_birthdays":true}]');
     }
 
     /**
@@ -288,7 +277,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
         $this->client->getEvent(1);
 
-        $this->assertSentParametersEquals('getEvent', array('event_id' => 1));
+        $this->assertCallsWith('["getEvent",{"event_id":1}]');
     }
 
     private function browserAuthenticates()
@@ -296,6 +285,13 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         $this->browser
             ->returns('getChallenge', '[{"challenge":"c","seed":"f","timestamp":1}]')
             ->returns('getSession', '[{"user_id":"id","session_id":"sid"}]');
+    }
+
+    private function assertCallsWith($json)
+    {
+        $this->assertEquals('http://api.tuenti.com/api/', $this->browser->url);
+        $this->assertEquals('{"version":"0.5","requests":[' . $json . '],"session_id":"sid"}', $this->browser->parameters);
+        $this->assertBrowserHeadersAreValid();
     }
 
     private function assertBrowserHeadersAreValid()
@@ -308,7 +304,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
             'Content-Type' => 'application/x-www-form-urlencoded'
         );
 
-        $this->assertEquals($expectedHeaders, $this->browser->requests['getChallenge']['headers']);
+        $this->assertEquals($expectedHeaders, $this->browser->headers);
     }
 
     private function assertBrowserReceivedValidAuthenticationDetails()
@@ -319,11 +315,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
             '"application_key":"MDI3MDFmZjU4MGExNWM0YmEyYjA5MzRkODlmMjg0MTU6MC43NzQ4ODAwMCAxMjc1NDcyNjgz"' .
             '}]]}';
 
-        $this->assertEquals($expectedSessionRequest, $this->browser->requests['getSession']['parameters']);
-    }
-
-    private function assertSentParametersEquals($method, $data) {
-        $this->assertEquals(array($method, $data), $this->browser->getSentParameters($method));
+        $this->assertEquals($expectedSessionRequest, $this->browser->parameters);
     }
 
     private function browserAuthenticatesAndReturnsData()
