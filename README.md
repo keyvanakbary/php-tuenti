@@ -1,17 +1,15 @@
-PHP Tuenti API
-==============
+# PHP Tuenti API
 
-[![Build Status](https://secure.travis-ci.org/keyvanakbary/php-tuenti-api.svg?branch=master)](http://travis-ci.org/keyvanakbary/php-tuenti-api)
+[![Build Status](https://secure.travis-ci.org/keyvanakbary/php-tuenti.svg?branch=master)](http://travis-ci.org/keyvanakbary/php-tuenti)
 
 Unofficial Tuenti API.
 
-Setup and Configuration
------------------------
+## Setup and Configuration
 Add the following to your `composer.json` file
 ```json
 {
     "require": {
-        "keyvanakbary/tuenti-api": "~1.0"
+        "keyvanakbary/tuenti": "~1.0"
     }
 }
 ```
@@ -21,8 +19,7 @@ Update the vendor libraries
     curl -s http://getcomposer.org/installer | php
     php composer.phar install
 
-Usage
------
+## Usage
 
 ```php
 <?php
